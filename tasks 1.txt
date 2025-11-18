@@ -1,0 +1,4 @@
+devops adalah penghubung antara tim develop dengan operation agar mempercepat proses bangun hingga rilis ke public, developer yang mempunyai tugas build, test, rilis, deploy, dan monitoring
+
+step menginstal ubuntu dengan mengunduh file iso kemudian manjalankan divirtualbox dan mengatur penggunaan cpu, ram dan kapasitas yang ingin digunakan. Kemudian dirun dan memilih beberapa opsi yang disesuaikan dengan keinginan kita, setelah itu mengatur koneksi network sesuai dengan jaringan pada perangkat kita, maka ubuntu server sudah bisa login
+
