@@ -1,8 +1,8 @@
 Tasks 1
-1.	devops adalah penghubung antara tim develop dengan operation agar mempercepat proses bangun hingga rilis ke public, developer yang mempunyai tugas build, test, rilis, deploy, dan monitoring
-
+# 1.	pengertian DevOps
+### devops adalah penghubung antara tim develop dengan operation agar mempercepat proses bangun hingga rilis ke public, developer yang mempunyai tugas build, test, rilis, deploy, dan monitoring
   
-3.	step menginstal ubuntu server dengan versi 22.04.5
+# 2. step menginstal ubuntu server dengan versi 22.04.5
 1.	mengunduh virtualbox untuk menjalankan system operasi linux didalam windows lewat aplikasi. Dan mengunduh juga file linux .iso yang akan kita gunakan
 2.	instal virtualbox kemudian jalankan kemudian buat vm baru dan masukkan nama vm, pilih folder vm, dan file linux yang sudah diunduh tadi <img width="722" height="451" alt="image" src="https://github.com/user-attachments/assets/4500c0f8-ea7a-4127-b7ca-906a793c9e73" />
 
