@@ -3,6 +3,7 @@
 Dengan menginstal openssh-server kemudian cek status ssh dan activekan <img width="898" height="663" alt="image" src="https://github.com/user-attachments/assets/440c9025-7b81-4829-8d5b-309dd72a5e39" />
  kemudian masuk ke terminal windows dengan memasukkan ssh username@ip server kita <img width="918" height="573" alt="image" src="https://github.com/user-attachments/assets/9bacfc0c-4caf-46c8-a8a9-ece91c5b9d12" />
 
+
 ## 2.	Konfigurasi ssh agar bisa diakses menggunakan publikkey
 Menggunakan ssh-keygen untuk mendapatkan kunci ssh dan memilih penyimpanan dan nama <img width="868" height="390" alt="image" src="https://github.com/user-attachments/assets/619e8f83-b7a0-40cf-9274-d602a295f1a6" />
 
@@ -22,6 +23,7 @@ Penggunaan “grep” untuk mencari kata atau kalimat dalam file atau folder <im
 Penggunaan “sort” untuk melihat data sesuai dengan urutan terbesar atau terkecil <img width="940" height="359" alt="image" src="https://github.com/user-attachments/assets/8ff001d9-53fd-484c-a07c-4622c20cdad0" />
 
 Penggunaan “echo” untuk mereplace isi file sekaligus membuatnya atau menambahkan isi file dibawahnya <img width="940" height="235" alt="image" src="https://github.com/user-attachments/assets/ff80627b-95ea-4e22-9d00-655513a89a23" />
+
 
 ## 4.	Menyalakan akses ufw dengan memberikan akses untuk port 22,80, 443, 3000, 6969 
 Pertama dengan menjalankan ufw agar menjadi active <img width="940" height="502" alt="image" src="https://github.com/user-attachments/assets/22340f1c-8b10-4177-865d-9643988554eb" />
