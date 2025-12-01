@@ -3,7 +3,7 @@
 ## 1. mengubah repository menjadi privat
 menginstal gh dengan sudo apt install gh untuk menjalankan perintah cli
 
-<img width="602" height="94" alt="image" src="https://github.com/user-attachments/assets/79b37696-06f6-4487-8e9a-845e9e52a285" />
+<img width="858" height="96" alt="image" src="https://github.com/user-attachments/assets/b405cbdf-aa08-4a51-b9d6-34b24e622a51" />
 
 melakukan login dengan perintah gh auth login 
 
