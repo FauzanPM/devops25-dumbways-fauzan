@@ -6,16 +6,20 @@
 > Here, I am using a service provider from AWS and Terraform to create a server using IaC. Here, I am only creating main. tf file for the server creation center and security_group.tf to open ports.
 
 > <img width="1883" height="639" alt="image" src="https://github.com/user-attachments/assets/e21d332b-7e2d-44b9-be45-f81394d482a8" />
-> In the program above, I use the Sydney region, specify the AMI (operating system used according to the region), specify the instance used (t3.small), specify the SSH key used, add a name tag for convenience, then call the security group that has been created, and add an output after finishing creating the VPS so that I don't need to return to the AWS console.
+> This Terraform file is used to create and manage EC2 instances on AWS in the ap-southeast-2 region. This configuration defines two instances with different specifications, sets a key pair for SSH access, associates the appropriate security group, and displays the public IP of the main instance as output for access and further configuration purposes.
 
 > <img width="1884" height="724" alt="image" src="https://github.com/user-attachments/assets/21efbcde-a6a0-4db9-9a88-a2a230c8fa87" />
-> add the port configuration to be used, which means that if I add a new port later, “ # (1 unchanged attribute hidden)” will appear.
+> This Terraform file is used to configure network access rules to the server. This security group opens inbound access for SSH, HTTP/HTTPS, as well as several application and monitoring ports that can be added, such as Jenkins, SonarQube, Prometheus, Grafana, and Node Exporter, while outbound rules allow all outgoing traffic without restrictions.
 
 > <img width="1884" height="491" alt="image" src="https://github.com/user-attachments/assets/2c695791-a83d-4141-80a8-36b2e99d7c66" />
-> Here, I use four servers. For the app server and gateway, I use BiznetGio, and for monitoring and app server 2, I use AWS. everything will be run with a new user, namely devops.
+> This file is used to define hosts and their grouping in Ansible, such as appserver, monitoring, and gateway. Each group contains the target server IP, as well as global variables to determine the SSH user and Python interpreter used during playbook execution.
 
 > <img width="1885" height="487" alt="image" src="https://github.com/user-attachments/assets/6e8ebfed-ee12-4445-b62f-1c947552ad14" />
-> The ansible.cfg file serves as Ansible's main configuration file, which governs Ansible's default behavior when running playbooks, including SSH connections, authentication, and privilege escalation (sudo).
+> This configuration file is used to set Ansible's default behavior, such as the inventory location, SSH key used, remote user, and disabling host key checking. In addition, this configuration also sets SSH connection optimization and privilege escalation using sudo.
+
+> <img width="1885" height="525" alt="image" src="https://github.com/user-attachments/assets/9cd598d9-20d2-48b6-8553-7a0e3b9657cf" />
+> This playbook serves to create devops users across all servers, grant sudo access rights, and add SSH public keys so that users can log in via SSH. Users are created with a home directory, bash shell, SHA-256 hashed encrypted password, and are added to the sudo group.
+
 
 ## 2. Repository
 
@@ -76,6 +80,10 @@
 
 ## 4. Deploy
 
+<img width="1645" height="137" alt="image" src="https://github.com/user-attachments/assets/1aff16c3-b8f5-48cb-ae71-97bff997f871" />
+
+### Frontend
+
 > <img width="1886" height="520" alt="image" src="https://github.com/user-attachments/assets/74eb9b2e-7f46-40bd-8c9c-646ad336e38d" />
 > This Dockerfile is used to build the application frontend image using a multi-stage build approach. The first stage builds the React/Node.js v16 application, while the second stage uses Nginx to serve the build results as a static web, making the image lighter and ready to run in a production environment.
 
@@ -93,6 +101,109 @@
 
 > <img width="1919" height="1056" alt="image" src="https://github.com/user-attachments/assets/bb81ec23-ecdf-4da5-bec2-47ab68b84d24" />
 > results after successfully deploying the frontend
+
+### Backend
+
+> <img width="1882" height="564" alt="image" src="https://github.com/user-attachments/assets/b7bfd5bc-837c-4a72-84d5-8a5b1782a5c4" />
+> This file is used to build a Golang v1.16-based backend image using a multi-stage build. The builder stage compiles the Go application into a static binary, then the runtime stage runs that binary on a lightweight Alpine image, including the .env configuration file, so that the container is ready to run with a minimal image size.
+
+> <img width="1714" height="57" alt="image" src="https://github.com/user-attachments/assets/0777ca67-b6b0-48c6-83ac-8e4baa77d72b" />
+> he result of images that have been created based on the previous Dockerfile
+
+> <img width="1880" height="955" alt="image" src="https://github.com/user-attachments/assets/5302db69-4fec-4115-afcf-710cfe70f454" />
+> <img width="1882" height="900" alt="image" src="https://github.com/user-attachments/assets/3f127120-8945-4a7b-82b4-6d5380d3bf26" />
+> <img width="1887" height="859" alt="image" src="https://github.com/user-attachments/assets/51657e46-a21d-4b6b-9875-a84057130922" />
+> <img width="1889" height="569" alt="image" src="https://github.com/user-attachments/assets/851f2166-c176-4585-a678-6619814ed494" />
+> This file defines a Jenkins-based CI/CD backend pipeline. The pipeline will automatically run when there is a push to GitHub, perform code quality analysis using SonarQube, pull the latest code according to the branch, build the backend Docker image, stop the old container, run the new container with the appropriate port and network configuration, and perform a health check to ensure that the backend service is running normally.
+
+> <img width="1886" height="411" alt="image" src="https://github.com/user-attachments/assets/64348113-b682-436d-9087-6264df4429f1" />
+> File ini digunakan sebagai konfigurasi environment backend aplikasi. Isinya mencakup pengaturan keamanan (secret key), endpoint file upload, kredensial payment gateway, konfigurasi email sistem, serta parameter koneksi database PostgreSQL dan port aplikasi yang digunakan oleh backend.
+
+> <img width="1588" height="438" alt="image" src="https://github.com/user-attachments/assets/0d2b5135-9ead-4e08-a365-514bdabf5742" />
+> Then, we checked the structure and content of the DumbMerch application database running in the PostgreSQL container. The process was done by entering the database container, viewing the list of available tables, and displaying the data in the users table to ensure that the database schema and initial application data had been created and were running properly.
+
+## 5. Monitoring
+
+> <img width="1881" height="689" alt="image" src="https://github.com/user-attachments/assets/0112c200-de66-454c-a8cb-307b7d1e4651" />
+> This playbook is used to deploy Node Exporter on all servers (appserver2, gateway, and monitoring). Its function is to create a monitoring directory on the server, send the Node Exporter Docker Compose file, and then run the Node Exporter container using Docker Compose so that server system metrics can be collected by Prometheus.
+
+> <img width="1882" height="582" alt="image" src="https://github.com/user-attachments/assets/d35af648-310a-49b9-9730-3e078c07726e" />
+> File Docker Compose ini digunakan untuk menjalankan Node Exporter sebagai container. Node Exporter berfungsi mengekspor metrik sistem (CPU, memory, disk, filesystem, dll) melalui port 9100 dengan mount direktori sistem host secara read-only.
+
+> <img width="1877" height="670" alt="image" src="https://github.com/user-attachments/assets/8dbc6506-1018-4e37-900e-8e7323888748" />
+> <img width="1883" height="427" alt="image" src="https://github.com/user-attachments/assets/f4af809a-808b-43c8-9974-fd2b8782795b" />
+> This file is used to run stack monitoring consisting of Prometheus and Grafana using Docker Compose. Prometheus acts as a metric collector, while Grafana is used for visualization and alerting, complete with SMTP configuration for notifications.
+
+> <img width="1880" height="494" alt="image" src="https://github.com/user-attachments/assets/41ff4dab-604c-4361-96b9-91e460471482" />
+> This file is a Prometheus configuration that defines the target servers to be monitored. Each job_name represents a server (appserver, gateway, and monitoring) with a metric retrieval interval of every 5 seconds via Node Exporter on port 9100.
+
+> <img width="1887" height="721" alt="image" src="https://github.com/user-attachments/assets/3530a0ed-2def-4583-a26b-8d67bcd582eb" />
+> This playbook is used to set up and run a monitoring server. The process involves sending Prometheus configurations and Docker Compose files to the monitoring server, then running Prometheus and Grafana services using Docker Compose centrally.
+
+> <img width="1919" height="755" alt="image" src="https://github.com/user-attachments/assets/36d6c054-25bc-4593-948c-42dff667fb72" />
+> the results of running the node exporter
+
+> <img width="1919" height="468" alt="image" src="https://github.com/user-attachments/assets/636f7a7b-cfe2-4cf7-9489-8c72d59a6a30" />
+> Adding basic authentication to Prometheus by entering the username and password when first logging in with the Prometheus URL.
+> <img width="939" height="529" alt="image" src="https://github.com/user-attachments/assets/02ed40a7-a780-4b73-9c84-7fc3683ac505" />
+> after Prometheus connects to or obtains data from the node exporter server
+
+> <img width="1445" height="702" alt="image" src="https://github.com/user-attachments/assets/bf022a28-6035-4333-8d6a-23b85ffa089d" />
+> Adding a URL and basic authentication to Grafana to retrieve data collected by Prometheus
+> <img width="939" height="557" alt="image" src="https://github.com/user-attachments/assets/cd63ea6e-5905-422d-abe0-afd07b572f0b" />
+> displaying data from several servers used, data in the form of CPU usage, RAM, disk, and others
+
+> <img width="1432" height="636" alt="image" src="https://github.com/user-attachments/assets/c3adb837-328a-4637-920a-f82462d6793b" />
+> For contact points, use the Telegram bot by entering the BOT API Token and Chat ID.
+> <img width="1380" height="828" alt="image" src="https://github.com/user-attachments/assets/2711ae07-1e25-4e1f-862c-3fa794ddef00" />
+> create a warning for RAM usage, and warn users not to exceed 2GB on the monitoring server out of the current total RAM usage of 2.7GB
+> <img width="1417" height="617" alt="image" src="https://github.com/user-attachments/assets/946affe0-e32d-446d-9c76-6a99a2d34ac3" />
+> When usage exceeds the previously set warning, it will pause before firing for one minute from the previously set time.
+> <img width="1435" height="990" alt="image" src="https://github.com/user-attachments/assets/603c3ffc-3f89-42bf-9d9d-707946ba59b8" />
+> Display an alert message when rules exceed the pending time limit, showing the usage value, alert name, alert folder, and which server exceeded the rules. Send a resolved message when the rules have been addressed.
+
+## 6. SSL
+> <img width="1885" height="582" alt="image" src="https://github.com/user-attachments/assets/6b806d19-9881-4dfd-b1b1-8bd25a91c7b6" />
+> <img width="1887" height="965" alt="image" src="https://github.com/user-attachments/assets/f86f1e1b-2353-4380-ae1e-3b37f10bbe74" />
+> This playbook is used to configure SSL on Nginx reverse proxy using Let's Encrypt wildcard certificates. This playbook creates HTTPS configurations for various services (frontend & backend production/staging, Jenkins, Docker registry, Node Exporter, Grafana, and Prometheus), redirects HTTP to HTTPS, applies the same SSL certificate, tests the Nginx configuration, and reloads the Nginx service to activate the changes.
+
+> <img width="1919" height="774" alt="image" src="https://github.com/user-attachments/assets/7cad8869-ec2e-4624-bcca-a1dd4e459475" />
+> <img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/29c1948a-0118-4b30-8677-e0776f865b64" />
+> <img width="1919" height="843" alt="image" src="https://github.com/user-attachments/assets/fa311ed7-afd1-4e52-a3ba-21338c916183" />
+> <img width="1919" height="922" alt="image" src="https://github.com/user-attachments/assets/9732f8a9-dd40-435c-ab50-97dde5e37ab1" />
+> <img width="1919" height="874" alt="image" src="https://github.com/user-attachments/assets/50a0c23a-57fa-4ced-b3b3-c94dc700487d" />
+> <img width="1919" height="856" alt="image" src="https://github.com/user-attachments/assets/34256157-adb1-4f3c-a031-6f8f4cc97b14" />
+> <img width="1919" height="744" alt="image" src="https://github.com/user-attachments/assets/4b556c2f-ec44-487a-a760-72bcc917483e" />
+> <img width="1919" height="864" alt="image" src="https://github.com/user-attachments/assets/d61baaa5-e3d1-490b-848f-359df79a97c4" />
+> <img width="1919" height="669" alt="image" src="https://github.com/user-attachments/assets/8dc84535-4327-434d-9072-63de4da05dfe" />
+> This playbook is used to configure SSL/TLS on Nginx reverse proxy on the gateway server using Let's Encrypt wildcard certificates. All application services, CI/CD, and monitoring are accessed via HTTPS with an automatic redirect mechanism from HTTP to HTTPS.
+> 
+> This playbook creates reverse proxy configurations for frontend and backend in production and staging environments, as well as supporting services such as Jenkins, Docker Registry, Grafana, Prometheus, and Node Exporter. Each domain is directed to the appropriate service based on the internal port of each container or application.
+> 
+> In addition to SSL implementation, this configuration also forwards standard headers (Host, X-Real-IP, X-Forwarded-*) so that the backend application continues to receive the original request information from the client. For Prometheus, basic authentication is implemented to restrict access to the monitoring dashboard.
+> 
+> Once all configurations are complete, the playbook will validate the Nginx configuration and reload the Nginx service without downtime so that all changes take effect immediately.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
