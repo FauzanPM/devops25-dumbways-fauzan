@@ -27,6 +27,7 @@
 > <img width="1887" height="960" alt="image" src="https://github.com/user-attachments/assets/974b3d0d-82af-4946-8e56-dbade12d4540" />
 > <img width="1884" height="864" alt="image" src="https://github.com/user-attachments/assets/02f6b06c-e8f6-4f53-a511-406cbb37a1bf" />
 > <img width="1871" height="268" alt="image" src="https://github.com/user-attachments/assets/bc8114eb-4534-47bd-bcd8-40a270b452b5" />
+> <img width="1919" height="647" alt="image" src="https://github.com/user-attachments/assets/26f0fb76-dac4-45ab-85cd-525c56ee3c01" />
 > This playbook is used to set up the initial Git configuration on the application server. Its functions include creating an SSH directory, adding GitHub to known_hosts, setting up Git identity (username & email), cloning the frontend and backend template repositories, changing the remote to a private repository, and creating and pushing staging and production branches to GitHub.
 
 > <img width="1885" height="952" alt="image" src="https://github.com/user-attachments/assets/cb7097b0-f2be-4d22-bef4-e987c4310e2c" />
