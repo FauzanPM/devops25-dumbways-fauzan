@@ -5,7 +5,8 @@
 > <img width="1867" height="62" alt="image" src="https://github.com/user-attachments/assets/41dfeafc-eebc-4cf0-921c-2fb00262cab6" />
 > Here, I am using a service provider from AWS and Terraform to create a server using IaC. Here, I am only creating main. tf file for the server creation center and security_group.tf to open ports.
 
-> <img width="1883" height="639" alt="image" src="https://github.com/user-attachments/assets/e21d332b-7e2d-44b9-be45-f81394d482a8" />
+> <img width="1881" height="785" alt="image" src="https://github.com/user-attachments/assets/9b965c90-cdbe-45ac-9176-69c1ee45caa0" />
+> <img width="1897" height="240" alt="image" src="https://github.com/user-attachments/assets/152753a6-94b9-49be-8083-9c3e75e60d8c" />
 > This Terraform file is used to create and manage EC2 instances on AWS in the ap-southeast-2 region. This configuration defines two instances with different specifications, sets a key pair for SSH access, associates the appropriate security group, and displays the public IP of the main instance as output for access and further configuration purposes.
 
 > <img width="1884" height="724" alt="image" src="https://github.com/user-attachments/assets/21efbcde-a6a0-4db9-9a88-a2a230c8fa87" />
