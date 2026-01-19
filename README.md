@@ -93,6 +93,9 @@
 > <img width="1790" height="62" alt="image" src="https://github.com/user-attachments/assets/ce4b794f-404e-425d-a9ad-411414b8d601" />
 > the result of images that have been created based on the previous Dockerfile
 
+> <img width="1882" height="86" alt="image" src="https://github.com/user-attachments/assets/6443d35f-cc68-4eed-bb8b-7b53ebf3bcad" />
+> add baseurl to connect frontend with backend
+
 > <img width="1882" height="960" alt="image" src="https://github.com/user-attachments/assets/6557d203-1bbe-4e6b-9520-20ab9c42cd41" />
 > <img width="1885" height="896" alt="image" src="https://github.com/user-attachments/assets/0d588d5b-b7be-46dc-9120-d6591ee1d84e" />
 > <img width="1892" height="860" alt="image" src="https://github.com/user-attachments/assets/998972e3-cde8-420c-9e47-363d8f038ddc" />
