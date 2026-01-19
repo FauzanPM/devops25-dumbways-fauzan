@@ -29,13 +29,14 @@
 > <img width="1871" height="268" alt="image" src="https://github.com/user-attachments/assets/bc8114eb-4534-47bd-bcd8-40a270b452b5" />
 > This playbook is used to set up the initial Git configuration on the application server. Its functions include creating an SSH directory, adding GitHub to known_hosts, setting up Git identity (username & email), cloning the frontend and backend template repositories, changing the remote to a private repository, and creating and pushing staging and production branches to GitHub.
 
+> <img width="1885" height="952" alt="image" src="https://github.com/user-attachments/assets/cb7097b0-f2be-4d22-bef4-e987c4310e2c" />
+> <img width="1877" height="645" alt="image" src="https://github.com/user-attachments/assets/fdbc7ade-ccac-4f7e-9028-489353c32836" />
+> This playbook is used to push local code changes to the GitHub repository. The script will automatically commit and then push to the staging and production branches for the frontend and backend, thereby simplifying the code synchronization process between environments.
+
 > <img width="1881" height="966" alt="image" src="https://github.com/user-attachments/assets/447a43f9-7d96-4c63-9f49-d1a281a88ea2" />
 > <img width="1882" height="630" alt="image" src="https://github.com/user-attachments/assets/cd0bf2a8-9ca8-4c7b-ab66-486f9f51dd70" />
 > This playbook is used to update application code by pulling the frontend and backend repositories from GitHub based on a specific branch (default: staging). It is used on deployment servers to ensure that the running code always follows the latest version of the repository.
 
-> <img width="1885" height="952" alt="image" src="https://github.com/user-attachments/assets/cb7097b0-f2be-4d22-bef4-e987c4310e2c" />
-> <img width="1877" height="645" alt="image" src="https://github.com/user-attachments/assets/fdbc7ade-ccac-4f7e-9028-489353c32836" />
-> This playbook is used to push local code changes to the GitHub repository. The script will automatically commit and then push to the staging and production branches for the frontend and backend, thereby simplifying the code synchronization process between environments.
 
 ## 3. setup configuration
 
