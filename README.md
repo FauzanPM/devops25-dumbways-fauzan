@@ -41,6 +41,11 @@
 
 ## 3. setup configuration
 
+> <img width="1881" height="859" alt="image" src="https://github.com/user-attachments/assets/a228c90a-1315-457f-9e4a-209bfb1b09c5" />
+> <img width="1887" height="811" alt="image" src="https://github.com/user-attachments/assets/b0a6d0b8-8079-4994-8146-2f6d508d173a" />
+> <img width="1879" height="483" alt="image" src="https://github.com/user-attachments/assets/9738abb6-febf-4e65-8fc1-d099bb96379a" />
+> Playbook ini digunakan untuk menyiapkan Docker Private Registry pada server monitoring dengan sistem autentikasi menggunakan htpasswd (bcrypt). Registry dijalankan sebagai container Docker dengan data dan konfigurasi autentikasi yang bersifat persisten. Setelah registry aktif, dilakukan pengecekan endpoint untuk memastikan layanan berjalan dan akses tanpa autentikasi ditolak. 
+
 > <img width="1884" height="976" alt="image" src="https://github.com/user-attachments/assets/2db99869-9c3f-43fc-a7fd-800df3dc9525" />
 > <img width="1889" height="891" alt="image" src="https://github.com/user-attachments/assets/0d7555e9-e2e9-4da3-8789-101af77ac49d" />
 > This playbook is used to install and set up Docker Engine on all hosts. The process includes updating the system repository, installing supporting dependencies, adding the GPG key and official Docker repository, installing Docker Engine and its components, ensuring that the Docker service runs automatically, and adding users to the docker group so that they can run Docker without root access.
