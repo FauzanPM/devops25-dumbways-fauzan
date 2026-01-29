@@ -7,7 +7,9 @@
 
 > <img width="1881" height="785" alt="image" src="https://github.com/user-attachments/assets/9b965c90-cdbe-45ac-9176-69c1ee45caa0" />
 > <img width="1897" height="240" alt="image" src="https://github.com/user-attachments/assets/152753a6-94b9-49be-8083-9c3e75e60d8c" />
-> This Terraform file is used to create and manage EC2 instances on AWS in the ap-southeast-2 region. This configuration defines two instances with different specifications, sets a key pair for SSH access, associates the appropriate security group, and displays the public IP of the main instance as output for access and further configuration purposes.
+> This Terraform file is used to create and manage EC2 instances on AWS in the ap-southeast-2 region. This configuration defines two instances with different specifications, sets a key pair for SSH access, associates the appropriate security group,
+> <img width="1830" height="247" alt="image" src="https://github.com/user-attachments/assets/46bfa813-e801-43b1-a41f-68343acac187" />
+> and displays the public IP of the main instance as output for access and further configuration purposes.
 
 > <img width="1884" height="724" alt="image" src="https://github.com/user-attachments/assets/21efbcde-a6a0-4db9-9a88-a2a230c8fa87" />
 > This Terraform file is used to configure network access rules to the server. This security group opens inbound access for SSH, HTTP/HTTPS, as well as several application and monitoring ports that can be added, such as Jenkins, SonarQube, Prometheus, Grafana, and Node Exporter, while outbound rules allow all outgoing traffic without restrictions.
